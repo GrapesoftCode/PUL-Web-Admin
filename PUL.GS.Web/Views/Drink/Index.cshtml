@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-3 align-self-center">
+            <h4 class="page-title">Mis Bebidas</h4>
+        </div>
+        <div class="col-1 align-self-lg-end">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu animated flipInX" style="">
+                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 align-self-center">
+            @*<div class="d-flex align-items-center justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div id="grdDrinks" class="row"></div>
+</div>
+
+@*
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Column -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <img class="card-img-top img-responsive" src="~/assets/images/drink/soda.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex no-block align-items-center m-b-15">
+                            <span>Bebida Alcoholica</span>
+                            <div class="ml-auto">
+                                <a href="javascript:void(0)" class="link">Existencias: si</a>
+                            </div>
+                        </div>
+                        <h3 class="font-normal">Vino Tinto</h3>
+                        <p class="m-b-0 m-t-10">Casa Madero</p>
+                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Ver más</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <img class="card-img-top img-responsive" src="~/assets/images/drink/soda.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex no-block align-items-center m-b-15">
+                            <span>Bebida Alcoholica</span>
+                            <div class="ml-auto">
+                                <a href="javascript:void(0)" class="link">Existencias: si</a>
+                            </div>
+                        </div>
+                        <h3 class="font-normal">Vino Tinto</h3>
+                        <p class="m-b-0 m-t-10">Casa Madero</p>
+                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Ver más</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <img class="card-img-top img-responsive" src="~/assets/images/drink/soda.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex no-block align-items-center m-b-15">
+                            <span>Bebida Alcoholica</span>
+                            <div class="ml-auto">
+                                <a href="javascript:void(0)" class="link">Existencias: si</a>
+                            </div>
+                        </div>
+                        <h3 class="font-normal">Vino Tinto</h3>
+                        <p class="m-b-0 m-t-10">Casa Madero</p>
+                        <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Ver más</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+    </div>*@
+
+@section Scripts {
+    <script src="~/js/app/drink.js"></script>
+    <script>
+        var ui = new PulAdmin.Drink();
+        ui.init();
+    </script>
+}

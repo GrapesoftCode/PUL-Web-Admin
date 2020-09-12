@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "NewPromotion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-3 align-self-center">
+            <h4 class="page-title">Nueva Promoción</h4>
+        </div>
+        <div class="col-1 align-self-lg-end">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu animated flipInX" style="">
+                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 align-self-center">
+            @*<div class="d-flex align-items-center justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                @using (Html.BeginForm("NewPromotion", "Promotion", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+                {
+                    @*<form>*@
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <img class="align-self-end mr-3 w-100" id="imgPromotion" name="imgPromotion" src="https://via.placeholder.com/300" alt="Generic placeholder image">
+                                    </div>
+                                </div>
+
+                                <fieldset class="form-group row">
+                                    <input type="file" class="form-control-file" required="" id="logo" name="logo" onchange="readURL(this);">
+                                </fieldset>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 text-left control-label col-form-label">Nombre</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Promoción">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 text-left control-label col-form-label">Precio</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" id="price" name="price" placeholder="Precio">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 text-left control-label">Descripción</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 text-left control-label">Activo</label>
+                                            <div class="col-sm-10">
+                                                <div class="bt-switch">
+                                                    <input type="checkbox" id="active" name="active" checked="" data-on-color="success" data-off-color="danger" data-on-text="Si" data-off-text="No" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr />
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                                <button type="submit" class="btn waves-effect waves-light btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                    @*</form>*@
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(".bt-switch input[type='checkbox'], .bt-switch input[type='radio']").bootstrapSwitch();
+
+        $("input[name='price']").TouchSpin({
+            min: -1000000000,
+            max: 1000000000,
+            step: 0.5,
+            decimals: 2,
+            stepinterval: 50,
+            maxboostedstep: 10000000,
+            prefix: '$'
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgPromotion').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

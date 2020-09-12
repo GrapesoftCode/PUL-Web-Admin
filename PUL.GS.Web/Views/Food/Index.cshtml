@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-3 align-self-center">
+            <h4 class="page-title">Mis platillos</h4>
+        </div>
+        <div class="col-1 align-self-lg-end">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu animated flipInX" style="">
+                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 align-self-center">
+            @*<div class="d-flex align-items-center justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list footable footable-5 footable-paging footable-paging-center breakpoint-lg" data-paging="true" data-paging-size="7" style="">
+                            <thead>
+                                <tr class="footable-header">
+                                    <th style="display: table-cell;">Nombre</th>
+                                    <th style="display: table-cell;">Categoria</th>
+                                    <th style="display: table-cell;">Porción</th>
+                                    <th style="display: table-cell;">Cantidad</th>
+                                    <th class="footable-last-visible" style="display: table-cell;">Precio</th>
+                                    <th style="display: table-cell;">Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="grdFoods">
+
+
+                                @*<tr>
+                                        <td class="footable-first-visible" style="display: table-cell;">1</td>
+                                        <td style="display: table-cell;">
+                                            <a href="javascript:void(0)"><img src="~/assets/images/food/paste.png" alt="user" width="40" class="rounded-circle"> Alitas</a>
+                                        </td>
+                                        <td style="display: table-cell;">Alitas Habanero</td>
+                                        <td style="display: table-cell;">Snack</td>
+                                        <td style="display: table-cell;"><span class="label label-danger">Designer</span> </td>
+                                        <td style="display: table-cell;">23</td>
+                                        <td style="display: table-cell;">4.º</td>
+                                        <td class="footable-last-visible" style="display: table-cell;">$1200</td>
+                                    </tr>*@
+                            </tbody>
+                            @*<tfoot><tr class="footable-paging"><td colspan="8"><div class="footable-pagination-wrapper"><ul class="pagination justify-content-center"><li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link" href="#">«</a></li><li class="footable-page-nav disabled" data-page="prev"><a class="footable-page-link" href="#">‹</a></li><li class="footable-page visible active" data-page="1"><a class="footable-page-link" href="#">1</a></li><li class="footable-page visible" data-page="2"><a class="footable-page-link" href="#">2</a></li><li class="footable-page-nav" data-page="next"><a class="footable-page-link" href="#">›</a></li><li class="footable-page-nav" data-page="last"><a class="footable-page-link" href="#">»</a></li></ul><div class="divider"></div><span class="label label-primary">1 of 2</span></div></td></tr></tfoot>*@
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/app/food.js"></script>
+    <script>
+        var ui = new PulAdmin.Food();
+        ui.init();
+    </script>
+}

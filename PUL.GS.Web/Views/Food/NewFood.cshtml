@@ -1,0 +1,251 @@
+﻿
+@{
+    ViewBag.Title = "NewFood";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-3 align-self-center">
+            <h4 class="page-title">Nuevo Platillo/Comida/Botana</h4>
+        </div>
+        <div class="col-1 align-self-lg-end">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu animated flipInX" style="">
+                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 align-self-center">
+            @*<div class="d-flex align-items-center justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("NewFood", "Food", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+            {
+                @*<form>*@
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+
+                                <fieldset class="form-group row">
+                                    @*<input type="file" class="form-control-file" required id="fileFood" name="fileFood" onchange="readURL(this);">*@
+                                    <input type="file" class="form-control" required id="logo" name="logo" onchange="readURL(this);">
+                                </fieldset>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <img class="align-self-end mr-3 w-100 img-thumbnail" id="imgFood" name="imgFood" src="~/assets/images/300x300.jpeg" width="300" height="300" alt="Generic placeholder image" required>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-7">
+                                @*<div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-left control-label col-form-label">Tiempo</label>
+                                                <div class="col-md-9">
+                                                    <select class="form-control custom-select" id="time" name="time" required>
+                                                        <option value="Plato Fuerte">Plato Fuerte</option>
+                                                        <option value="Snack">Snack</option>
+                                                        <option value="Postre">Postre</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-left control-label col-form-label">Categoria</label>
+                                            <div class="col-md-9">
+                                                <input type="text" id="category" name="category" class="form-control" required>
+                                                @*<select class="form-control custom-select" id="category" name="category" required>
+                                                    <option value="Carnes">Carnes</option>
+                                                </select>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group row">
+                                                <label class="col-sm-4 text-left control-label col-form-label">Subcategoria</label>
+                                                <div class="col-md-8">
+                                                    <select class="form-control custom-select" id="subcategory" name="subcategory" required>
+                                                        <option value="T-Bone">T-Bone</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-left control-label">Nombre</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del platillo o comida" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-left control-label">Porciones</label>
+                                            <div class="col-md-9">
+                                                <input type="text" id="portion" name="portion" class="form-control" value="1" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-left control-label">Cantidad</label>
+                                            <div class="col-md-9">
+                                                <input id="grams" type="text" value="1" name="grams" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-sm-2">
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <select class="form-control custom-select" required>
+                                                    <option value="">grs</option>
+                                                    <option value="">kg</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-left control-label">Precio</label>
+                                            <div class="col-md-9">
+                                                <input id="price" type="text" value="1" name="price" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 text-left control-label">Cover</label>
+                                            <div class="col-sm-10">
+                                                <fieldset>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" value="1" name="cover" required class="custom-control-input" id="cover" aria-invalid="false">
+                                                        <label class="custom-control-label" for="cover"></label>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 text-left control-label">Descripción</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" id="description" name="description" required rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                                <button type="submit" class="btn waves-effect waves-light btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*</form>*@
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        //$("input[name='portion']").TouchSpin();
+        //$("input[name='quantity']").TouchSpin();
+
+        $("input[name='portion']").TouchSpin({
+            min: 0,
+            max: 5000,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 10,
+        });
+
+        $("input[name='grams']").TouchSpin({
+            min: 0,
+            max: 5000,
+            step: 0.5,
+            decimals: 2,
+            boostat: 5,
+            maxboostedstep: 10,
+            postfix: 'g'
+        });
+
+        $("input[name='price']").TouchSpin({
+            min: -1000000000,
+            max: 1000000000,
+            step: 0.5,
+            decimals: 2,
+            stepinterval: 50,
+            maxboostedstep: 10000000,
+            prefix: '$'
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgFood').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

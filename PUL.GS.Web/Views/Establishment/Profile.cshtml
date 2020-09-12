@@ -1,0 +1,460 @@
+﻿@model PUL.GS.Models.Establishment
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- This Page CSS -->
+<link rel="stylesheet" type="text/css" href="~/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-5 align-self-center">
+            <h4 class="page-title">Perfil</h4>
+        </div>
+        <div class="col-7 align-self-center">
+            @*<div class="d-flex align-items-center justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>*@
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <!-- Row -->
+    <div class="row">
+        <!-- Column -->
+        <div class="col-lg-4 col-xlg-3 col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <center class="m-t-30">
+                        <img src="@Model.Logo.Uri" class="rounded-circle" width="150" />
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="inputcom" class="control-label">@Model.Name</label>
+                                    @*<input type="text" class="form-control" id="inputcom" placeholder="Establecimiento">*@
+                                </div>
+                            </div>
+                        </div>
+                        @*<h4 class="card-title m-t-10">Hanna Gover</h4>
+                            <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                            <div class="row text-center justify-content-md-center">
+                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">254</font></a></div>
+                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-picture"></i> <font class="font-medium">54</font></a></div>
+                            </div>*@
+                    </center>
+                </div>
+                <div>
+                    <hr>
+                </div>
+                <div class="card-body">
+                    <small class="text-muted">Email </small>
+                    <h6>@Model.Email</h6> <small class="text-muted p-t-30 db">Teléfono</small>
+                    <h6>@Model.PhoneNumber</h6> <small class="text-muted p-t-30 db">Dirección</small>
+                    <h6>@Model.Address.Street  @Model.Address.InteriorNumber  @Model.Address.OutdoorNumber  @Model.Address.Neighborhood  @Model.Address.PostalCode  @Model.Address.Municipality  @Model.Address.State</h6>
+                    <div class="map-box">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div> <small class="text-muted p-t-30 db">Social Profile</small>
+                    <br />
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+        <!-- Column -->
+        <div class="col-lg-8 col-xlg-9 col-md-7">
+            <div class="card">
+                <!-- Tabs -->
+                <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-generales-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-generales" aria-selected="true">Generales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-documentos-tab" data-toggle="pill" href="#last-month" role="tab" aria-controls="pills-documentos" aria-selected="false">Documentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-estatus-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-estatus" aria-selected="false">Estatus</a>
+                    </li>
+                </ul>
+                <!-- Tabs -->
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-generales-tab">
+
+                        @*<form class="form-horizontal">*@
+                        <div class="card-body">
+                            <h4 class="card-title">Requisitos</h4>
+
+                            <div class="form-group row">
+                                <label for="establishment" class="col-sm-3 text-right control-label">Establecimiento</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="name" name="name">@Model.Name</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="com1" class="col-sm-3 text-right control-label">RFC</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="rfc" name="rfc">@Model.Rfc</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Teléfono</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="phoneNumber" name="phoneNumber">@Model.PhoneNumber</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Email</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="email" name="email">@Model.Email</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Cover</label>
+                                <div class="col-sm-9 controls">
+                                    <fieldset>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" value="1" name="cover" required="" class="custom-control-input" id="cover" aria-invalid="false">
+                                            <label class="custom-control-label" for="cover"></label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <h4 class="card-title">Dirección</h4>
+
+                            <div class="form-group row">
+                                <label for="address.street" class="col-sm-3 text-right control-label">Calle</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="address.street" name="address.street">@Model.Address.Street</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address.interiorNumber" class="col-sm-3 text-right control-label">Número Interior</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="address.interiorNumber" name="address.interiorNumber">@Model.Address.InteriorNumber</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address.outdoorNumber" class="col-sm-3 text-right control-label">Número Exterior</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="address.outdoorNumber" name="address.outdoorNumber">@Model.Address.OutdoorNumber</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address.neighborhood" class="col-sm-3 text-right control-label">Colonia</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static" id="address.neighborhood" name="address.neighborhood">@Model.Address.Neighborhood</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address.municipality" class="col-sm-3 text-right control-label">Delegación/Municipio</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static" id="address.municipality" name="address.municipality">@Model.Address.Municipality</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label id="address.state" class="col-sm-3 text-right control-label">Estado</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static" id="address.state" name="address.state">@Model.Address.State</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label id="address.postalCode" class="col-sm-3 text-right control-label">Código Postal</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static" id="address.postalCode" name="address.postalCode">@Model.Address.PostalCode</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label id="address.country" class="col-sm-3 text-right control-label">País</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static" id="address.country" name="address.country">@Model.Address.Country</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <h4 class="card-title">Dirección Fiscal</h4>
+
+                            <div class="form-group row">
+                                <label for="fiscalAddress.street" class="col-sm-3 text-right control-label">Calle</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="fiscalAddress.street" name="addrefiscalAddressss.street">@Model.FiscalAddress.Street</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fiscalAddress.interiorNumber" class="col-sm-3 text-right control-label">Número Interior</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="fiscalAddress.interiorNumber" name="fiscalAddress.interiorNumber">@Model.FiscalAddress.InteriorNumber</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fiscalAddress.outdoorNumber" class="col-sm-3 text-right control-label">Número Exterior</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" id="fiscalAddress.outdoorNumber" name="fiscalAddress.outdoorNumber">@Model.FiscalAddress.OutdoorNumber</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fiscalAddress.neighborhood" class="col-sm-3 text-right control-label">Colonia</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static" id="fiscalAddress.neighborhood" name="fiscalAddress.neighborhood">@Model.FiscalAddress.Neighborhood</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fiscalAddress.municipality" class="col-sm-3 text-right control-label">Delegación/Municipio</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static" id="fiscalAddress.municipality" name="fiscalAddress.municipality">@Model.FiscalAddress.Municipality</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label id="fiscalAddress.state" class="col-sm-3 text-right control-label">Estado</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static" id="fiscalAddress.state" name="fiscalAddress.state">@Model.FiscalAddress.State</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label id="fiscalAddress.postalCode" class="col-sm-3 text-right control-label">Código Postal</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static" id="fiscalAddress.postalCode" name="fiscalAddress.postalCode">@Model.FiscalAddress.PostalCode</p>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label id="fiscalAddress.country" class="col-sm-3 text-right control-label">País</label>
+                                <div class="col-md-6">
+                                    <p class="form-control-static" id="fiscalAddress.country" name="fiscalAddress.country">@Model.FiscalAddress.Country</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="card-body">
+                            <h4 class="card-title">Imágenes</h4>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Exterior</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group mb-3">
+                                        <ul class="list-unstyled" style="display:inline-flex;">
+                                            @{
+                                                foreach (var file in Model.Outside)
+                                                {
+                                                    <li class="media my-4">
+                                                        <img class="mr-3 w-75" src="@file.Uri" alt="Generic placeholder image">
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Interior</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group mb-3">
+                                        <ul class="list-unstyled" style="display:inline-flex;">
+                                            @{
+                                                foreach (var file in Model.Inside)
+                                                {
+                                                    <li class="media my-4">
+                                                        <img class="mr-3 w-75" src="@file.Uri" alt="Generic placeholder image">
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="last-month" role="tabpanel" aria-labelledby="pills-documentos-tab">
+                        <form class="form-horizontal">
+                            <div class="card-body">
+                                <h4 class="card-title">Documentos Legales</h4>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-right control-label">Acta constitutiva</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group mb-3">
+                                            @*<div class="input-group-prepend">
+                                                    <span class="input-group-text">Subir</span>
+                                                </div>*@
+
+                                            @*<div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="igfDocumentAC">
+                                                    <label class="custom-file-label" for="igfDocumentAC">Elije Imagen</label>
+                                                </div>*@
+                                            <ul class="list-unstyled" style="display:inline-flex;">
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-right control-label">Alta hacienda</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group mb-3">
+                                            @*<div class="input-group-prepend">
+                                                    <span class="input-group-text">Subir</span>
+                                                </div>*@
+                                            @*<div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="igfAH">
+                                                    <label class="custom-file-label" for="igfAH">Elije Imagen</label>
+                                                </div>*@
+                                            <ul class="list-unstyled" style="display:inline-flex;">
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-3 text-right control-label">Comprobante de domocilio</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group mb-3">
+                                            @*<div class="input-group-prepend">
+                                                    <span class="input-group-text">Subir</span>
+                                                </div>*@
+                                            @*<div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="igfCD">
+                                                    <label class="custom-file-label" for="igfCD">Elije Imagen</label>
+                                                </div>*@
+                                            <ul class="list-unstyled" style="display:inline-flex;">
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                                <li class="media my-4">
+                                                    <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="card-body">
+                                    <div class="form-group m-b-0 text-right">
+                                        <button type="submit" class="btn btn-info waves-effect waves-light">Guardar</button>
+                                        <button type="submit" class="btn btn-dark waves-effect waves-light">Cancelar</button>
+                                    </div>
+                                </div>*@
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="previous-month" role="tabpanel" aria-labelledby="pills-estatuss-tab">
+                        <div class="card-body">
+                            <center class="m-t-30">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="inputcom" class="control-label">Tu solicitud está: Pendiente </label>
+                                            @*<input type="text" class="form-control" id="inputcom" placeholder="Establecimiento">*@
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputcom" class="control-label">Cualquier duda comunicate con: 555505050550</label>
+                                            @*<input type="text" class="form-control" id="inputcom" placeholder="Establecimiento">*@
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputcom" class="control-label">Email: admin@pul.com</label>
+                                            @*<input type="text" class="form-control" id="inputcom" placeholder="Establecimiento">*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+    <!-- Row -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+<!-- ============================================================== -->
+
+
+@section Scripts{
+    <!-- This Page JS -->
+    <script src="~/assets/libs/moment/moment.js"></script>
+    <script src="~/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        // Date Picker
+        jQuery('.mydatepicker, #datepicker, .input-group.date').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+
+
+            //$.ajax({
+            //    type: "GET",
+            //    url: "/Account/Profile",
+            //    success: function (data) {
+            //        if (data.isValid) {
+            //            //I don't know what to put here
+            //        };
+            //    },
+            //    error: function () {
+            //        alert('error');
+            //    }
+            //});
+
+    </script>
+}

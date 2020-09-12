@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PUL.GS.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    using (Html.BeginForm("SignOut", "Account", new { area = "" }, FormMethod.Post, false, new { id = "logoutForm" }))
+    {
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar Sesión</a>
+    }
+}

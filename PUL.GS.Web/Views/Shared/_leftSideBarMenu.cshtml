@@ -1,0 +1,146 @@
+﻿<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            @await Component.InvokeAsync("Modules")
+
+            @*<ul id="sidebarnav">
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","Dashboard")" aria-expanded="false"><i class="mdi mdi-av-timer"></i><span class="hide-menu">Dashboard</span></a></li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-book-multiple-variant"></i>
+                            <span class="hide-menu">Reservaciones</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Pending","Book")" class="sidebar-link">
+                                    <i class="mdi mdi-book-open-page-variant"></i>
+                                    <span class="hide-menu">Revisión</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Index","Book")" class="sidebar-link">
+                                    <i class="mdi mdi-book-open"></i>
+                                    <span class="hide-menu">Todas</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-crop-square"></i>
+                            <span class="hide-menu">Mesas</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Index","Table")" class="sidebar-link">
+                                    <i class="mdi mdi-square-inc"></i>
+                                    <span class="hide-menu">Consulta</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("NewTable","Table")" class="sidebar-link">
+                                    <i class="mdi mdi-shape-square-plus"></i>
+                                    <span class="hide-menu">Nueva</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-food-apple"></i>
+                            <span class="hide-menu">Comida</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Index","Food")" class="sidebar-link">
+                                    <i class="mdi mdi-food-variant"></i>
+                                    <span class="hide-menu">Consulta</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("NewFood","Food")" class="sidebar-link">
+                                    <i class="mdi mdi-food-fork-drink"></i>
+                                    <span class="hide-menu">Nueva</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-cup"></i>
+                            <span class="hide-menu">Bebidas</span>
+                        </a>
+
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Index","Drink")" class="sidebar-link">
+                                    <i class="mdi mdi-glass-stange"></i>
+                                    <span class="hide-menu">Consulta</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("NewDrink","Drink")" class="sidebar-link">
+                                    <i class="mdi mdi-cup-water"></i>
+                                    <span class="hide-menu">Nueva</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-food-fork-drink"></i>
+                            <span class="hide-menu">Paquetes/Combos</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Index","Combo")" class="sidebar-link">
+                                    <i class="mdi mdi-format-align-left"></i>
+                                    <span class="hide-menu">Consulta</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("NewCombo","Combo")" class="sidebar-link">
+                                    <i class="mdi mdi-food"></i>
+                                    <span class="hide-menu">Nuevo</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-package"></i>
+                            <span class="hide-menu">Promociones</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Index","Promotion")" class="sidebar-link">
+                                    <i class="mdi mdi-package-variant"></i>
+                                    <span class="hide-menu">Consulta</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("NewPromotion","Promotion")" class="sidebar-link">
+                                    <i class="mdi mdi-package-up"></i>
+                                    <span class="hide-menu">Nueva</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>*@
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

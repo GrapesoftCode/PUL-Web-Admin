@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "NewTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-3 align-self-center">
+            <h4 class="page-title">Nueva</h4>
+        </div>
+        <div class="col-1 align-self-lg-end">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu animated flipInX" style="">
+                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 align-self-center">
+            @*<div class="d-flex align-items-center justify-content-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                @using (Html.BeginForm("NewTable", "Table", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+                {
+                    @*<form>*@
+                    @Html.AntiForgeryToken()
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <img class="align-self-end mr-3 w-100 img-thumbnail" id="imgTable" name="imgTable" src="~/assets/images/table/table-icon.png" required alt="Generic placeholder image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 text-right control-label col-form-label">Tipo</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control custom-select" id="selectType" name="selectType" required>
+                                            <option value="Gebinete" selected>Gebinete</option>
+                                            <option value="Rectangular">Rectangular</option>
+                                            <option value="Cuadrada">Cuadrada</option>
+                                            <option value="Redonda">Redonda</option>
+                                            <option value="Ovalada">Ovalada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 text-right control-label col-form-label">Ubicación</label>
+                                    <div class="col-md-8">
+                                        <select class="form-control custom-select" id="location" name="location" required>
+                                            <option value="Terraza" selected>Terraza</option>
+                                            <option value="Barra">Barra</option>
+                                            <option value="En piso">En piso</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 text-right control-label col-form-label">Capacidad</label>
+                                    <div class="col-md-8">
+                                        <input id="quantity" type="text" value="1" min="1" name="quantity" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 text-right control-label">Consumo mínimo por persona</label>
+                                    <div class="col-md-8">
+                                        <input id="minimumConsumption" type="text" value="1" name="minimumConsumption" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 text-right control-label col-form-label">Área de fumar</label>
+                                    <div class="col-sm-8">
+                                        <div class="m-b-0 m-t-20">
+                                            <div class="bt-switch">
+                                                <input type="checkbox" id="smokingArea" name="smokingArea" checked data-on-color="primary" data-off-color="info" data-on-text="Si" data-off-text="No">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                                <button type="submit" class="btn waves-effect waves-light btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                    @*</form>*@
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(".bt-switch input[type='checkbox'], .bt-switch input[type='radio']").bootstrapSwitch();
+        $("input[name='number']").TouchSpin();
+        $("input[name='quantity']").TouchSpin();
+
+
+        $("input[name='minimumConsumption']").TouchSpin({
+            min: -1000000000,
+            max: 1000000000,
+            step: 0.5,
+            decimals: 2,
+            stepinterval: 50,
+            maxboostedstep: 10000000,
+            prefix: '$'
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgTable').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
+}

@@ -1,0 +1,526 @@
+﻿
+
+@{
+    ViewBag.Title = "NewEstablishment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/libs/jquery-steps/jquery.steps.css">
+<link rel="stylesheet" type="text/css" href="~/assets/libs/jquery-steps/steps.css">
+<link rel="stylesheet" type="text/css" href="~/css/image-uploader.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-3 align-self-center">
+            <h4 class="page-title">Nuevo Establecimiento</h4>
+        </div>
+
+        <div class="col-3 align-self-center">
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body wizard-content">
+                    <h4 class="card-title">Step wizard with validation</h4>
+                    <h6 class="card-subtitle">You can us the validation like what we did</h6>
+
+                    <form class="validation-wizard wizard-circle m-t-40" id="frmAddEstablishment" action="NewEstablishment" method="post">
+                        <!-- Step 1 -->
+                        <h6>Datos Generales</h6>
+                        <section>
+                            <div class="row">
+                                @*<div class="col-sm-4">
+                                        <fieldset class="form-group row">
+                                            <input type="file" class="form-control" required id="logo" name="logo" onchange="readURL(this);">
+                                            <div class="col-sm-12">
+                                                <img class="align-self-end mr-3 w-100 img-thumbnail" id="imgLogo" name="imgLogo" required src="https://via.placeholder.com/300" alt="Generic placeholder image">
+                                            </div>
+                                        </fieldset>
+                                    </div>*@
+                                <div class="col-md-4">
+                                    <h5 class="card-title m-t-10">Subir Imágen</h5>
+                                    <div class="el-element-overlay">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1">
+                                                <img src="https://via.placeholder.com/300" alt="user" id="imgLogo" name="imgLogo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn btn-info waves-effect waves-light">
+                                        <span>Subir Otra Imágen</span>
+                                        <input type="file" class="upload" required id="logo" name="logo" onchange="readURL(this,'#imgLogo');">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="name">Establecimiento :  <span class="danger">*</span></label>
+                                                <input type="text" class="form-control required" id="name" name="name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="text-left control-label">Cover</label>
+                                                <div class="col-sm-12">
+                                                    <div class="bt-switch">
+                                                        <input type="checkbox" checked="" id="cover" name="cover" data-on-color="success" data-off-color="danger" data-on-text="Si" data-off-text="No">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="name">Genero Musical :  <span class="danger">*</span></label>
+                                                <input type="text" class="form-control required" id="musicalGenre" name="musicalGenre">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="name">Tipo :  <span class="danger">*</span></label>
+                                                <input type="text" class="form-control required" id="type" name="type">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="name">Nivel de Costo :  <span class="danger">*</span></label>
+                                                <input type="text" class="form-control required" id="costLevel" name="costLevel">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="rfc">RFC : <span class="danger">*</span></label>
+                                                <input type="text" class="form-control required" id="rfc" name="rfc">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Email : <span class="danger">*</span></label>
+                                                <input type="email" class="form-control required" id="email" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="form-group">
+                                                <label for="phoneNumber">Teléfono : <span class="danger">*</span></label>
+                                                <input type="tel" class="form-control required" id="phoneNumber" name="phoneNumber">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Step 2 -->
+                        <h6>Dirección</h6>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="country">País :</label>
+                                        <select class="custom-select form-control required" id="address.country" name="address.country" data-placeholder="País">
+                                            <option value="">Selecciona</option>
+                                            <option value="Mexico">Mexico</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="postalCode">Codigo Postal :</label>
+                                        <input type="text" class="form-control required" id="address.postalCode" name="address.postalCode">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="state">Estado :</label>
+                                        <input type="text" class="form-control required" id="address.state" name="address.state">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="municipality">Municipio / Delegación :</label>
+                                        <input type="text" class="form-control required" id="address.municipality" name="address.municipality">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="neighborhood">Colonia :</label>
+                                        <input type="text" class="form-control required" id="address.neighborhood" name="address.neighborhood">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="street">Calle :</label>
+                                        <input type="text" class="form-control required" id="address.street" name="address.street">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="outdoorNumber">No Exterior :</label>
+                                        <input type="text" class="form-control required" id="address.outdoorNumber" name="address.outdoorNumber">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="interiorNumber">No Exterior :</label>
+                                        <input type="text" class="form-control required" id="address.interiorNumber" name="address.interiorNumber">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Step 3 -->
+                        <h6>Dirección Fiscal</h6>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="country">País :</label>
+                                        <select class="custom-select form-control required" id="fiscalAddress.country" name="fiscalAddress.country" data-placeholder="País">
+                                            <option value="">Selecciona</option>
+                                            <option value="Mexico">Mexico</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="postalCode">Codigo Postal :</label>
+                                        <input type="text" class="form-control required" id="fiscalAddress.postalCode" name="fiscalAddress.postalCode">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="state">Estado :</label>
+                                        <input type="text" class="form-control required" id="fiscalAddress.state" name="fiscalAddress.state">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="municipality">Municipio / Delegación :</label>
+                                        <input type="text" class="form-control" id="fiscalAddress.municipality" name="fiscalAddress.municipality">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="neighborhood">Colonia :</label>
+                                        <input type="text" class="form-control" id="fiscalAddress.neighborhood" name="fiscalAddress.neighborhood">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="street">Calle :</label>
+                                        <input type="text" class="form-control required" id="fiscalAddress.street" name="fiscalAddress.street">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="outdoorNumber">No Exterior :</label>
+                                        <input type="text" class="form-control required" id="fiscalAddress.outdoorNumber" name="fiscalAddress.outdoorNumber">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="interiorNumber">No Exterior :</label>
+                                        <input type="text" class="form-control required" id="fiscalAddress.interiorNumber" name="fiscalAddress.interiorNumber">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                        <!-- Step 4 -->
+                        <h6>Imagenes Interior/Exterior</h6>
+                        <section>
+                            @*<div id="filesInterior" class="row">
+                                <div class="col-sm-12 p-15">
+                                    <label class="active">Imagenes del Interior del establecimiento</label>
+                                    <div class="input-images-input" style="padding-top: .5rem;"></div>
+                                </div>
+                                <div id="message-images"></div>
+                            </div>*@
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                        <input type="file" class="upload required" id="Inside" name="Inside" accept="image/jpg,image/png" multiple required @*onchange="readURL(this,'#img-inside-one');"*@>
+                                    </div>
+                                    <h5 class="card-title m-t-10">Interior</h5>
+                                    @*<div class="el-element-overlay">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1">
+                                                <img src="https://via.placeholder.com/300" alt="user" id="img-inside-one">
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                </div>
+                                @*<div class="col-sm-4">
+                                    <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                        <input type="file" class="upload required" id="InsideTwo" name="InsideTwo" accept="image/jpg,image/png" onchange="readURL(this,'#img-inside-two');">
+                                    </div>
+                                    <h5 class="card-title m-t-10">Interior Dos</h5>
+                                    <div class="el-element-overlay">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1">
+                                                <img src="https://via.placeholder.com/300" alt="user" id="img-inside-two">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                        <input type="file" class="upload required" id="InsideThree" name="InsideThree" accept="image/jpg,image/png" onchange="readURL(this,'#img-inside-three');">
+                                    </div>
+                                    <h5 class="card-title m-t-10">Interior Tres</h5>
+                                    <div class="el-element-overlay">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1">
+                                                <img src="https://via.placeholder.com/300" alt="user" id="img-inside-three">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                                <div class="col-sm-12">
+                                    <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                        <input type="file" class="upload required" id="Outside" name="Outside" accept="image/jpg,image/png" multiple required @*onchange="readURL(this,'#img-outside-one');"*@>
+                                    </div>
+                                    <h5 class="card-title m-t-10">Exterior</h5>
+                                    @*<div class="el-element-overlay">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1">
+                                                <img src="https://via.placeholder.com/300" alt="user" id="img-outside-one">
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                </div>
+                                @*<div class="col-sm-4">
+                                    <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                        <input type="file" class="upload required" id="OutsideTwo" name="OutsideTwo" accept="image/jpg,image/png" onchange="readURL(this,'#img-outside-two');">
+                                    </div>
+                                    <h5 class="card-title m-t-10">Exterior Dos</h5>
+                                    <div class="el-element-overlay">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1">
+                                                <img src="https://via.placeholder.com/300" alt="user" id="img-outside-two">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                        <input type="file" class="upload required" id="OutsideThree" name="OutsideThree" accept="image/jpg,image/png" onchange="readURL(this,'#img-outside-three');">
+                                    </div>
+                                    <h5 class="card-title m-t-10">Exterior Tres</h5>
+                                    <div class="el-element-overlay">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1">
+                                                <img src="https://via.placeholder.com/300" alt="user" id="img-outside-three">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </section>
+
+                        <!-- Step 5 -->
+                        <h6>Documentos Legales</h6>
+                        <section class="form-horizontal">
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Acta constitutiva</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group mb-3">
+                                        <ul class="list-unstyled" style="display:inline-flex;">
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Alta hacienda</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group mb-3">
+                                        <ul class="list-unstyled" style="display:inline-flex;">
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-3 text-right control-label">Comprobante de domocilio</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group mb-3">
+                                        <ul class="list-unstyled" style="display:inline-flex;">
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                            <li class="media my-4">
+                                                <img class="mr-3 w-75" src="~/assets/images/document/documento.png" alt="Generic placeholder image">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Step 6 -->
+                        @*<h6>Documentos</h6>
+                            <section>
+                                <div id="filesDocuments" class="row el-element-overlay">
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                                <span>Subir Documentos</span>
+                                                <input type="file" class="upload required" id="documents" name="documents" multiple accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
+    <script src="~/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/js/app/establishment.js"></script>
+    <script src="~/js/image-uploader.min.js"></script>
+    <script>
+
+        $(".bt-switch #cover").bootstrapSwitch();
+
+        function readURL(input, controlImage) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(controlImage).attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        //$('.input-images-input').imageUploader({
+        //    label: 'Arrastra y suelta archivos aquí o haz clic para navegar',
+        //    imagesInputName: 'Interior',
+        //});
+
+        //var selDiv = "";
+
+        //document.addEventListener("loadInput", init("#interior", "#filesInterior"), false);
+        //document.addEventListener("DOMContentLoaded2", init("#exterior", "#filesExterior"), false);
+        //document.addEventListener("DOMContentLoaded3", init("#documents", "#filesDocuments"), false);
+
+        //function init(files, div) {
+        //    document.querySelector(files).addEventListener('change', handleFileSelect, false);
+        //    selDiv = document.querySelector(div);
+        //}
+
+        //function handleFileSelect(e) {
+
+        //    if (!e.target.files || !window.FileReader) return;
+
+        //    selDiv.append("");
+        //    var i = 0;
+        //    var files = e.target.files;
+
+        //    if (files.length > 3) {
+        //        $("#message-images").text("No puedes subir más de 3 imagenes.")
+        //        e.target.files = null;
+        //        return;
+        //    }
+
+
+        //    var filesArr = Array.prototype.slice.call(files);
+        //    filesArr.forEach(function (f) {
+        //        var f = files[i];
+        //        if (!f.type.match("image.*")) {
+        //            return;
+        //        }
+
+        //        var reader = new FileReader();
+        //        reader.onload = function (e) {
+        //            var html =
+        //                "<div class=\"col-lg-4 col-md-4\">" +
+        //                "<div class=\"card\">" +
+        //                "<div class=\"el-card-item\">" +
+        //                "<div class=\"el-card-avatar el-overlay-1\">" +
+        //                "<img id=\"img-" + i + "\" src=\"" + e.target.result + "\" style=\"height:300px;\">" + f.name + "<br clear=\"left\"/>" +
+        //                "</div>" +
+        //                "</div>" +
+        //                "</div>" +
+        //                "</div>";
+        //            selDiv.innerHTML += html;
+        //        }
+        //        reader.readAsDataURL(f);
+        //        i++;
+        //    });
+
+        //}
+
+    </script>
+}
