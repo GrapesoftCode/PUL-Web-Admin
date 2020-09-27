@@ -46,6 +46,7 @@ namespace PUL.GS.Web
             services.AddControllersWithViews();
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<OneSignal>(Configuration.GetSection("OneSignal"));
 
             services.AddScoped<IUserManager<User>, PULUserManager<User>>();
             services.AddScoped<ISignInManager<User>, PULSignInManager<User>>();

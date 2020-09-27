@@ -51,11 +51,12 @@ namespace PUL.GS.Web.Controllers
                         var modules = _accountAgent.GetUserByCredentials(user.Username, user.Password, HttpContext.Session.Get<string>("token"));
                         var userId = modules.objectResult.Id;
                         var establishment = _establishmentAgent.GetEstablishmentById(userId);
-                        modules.objectResult.Establishment = establishment.objectResult;
 
-
-                        //ViewBag["UserData"] = modules.objectResult;
-                        HttpContext.Session.Set(Constants.SessionKeyState, modules.objectResult);
+                        if (establishment.Success)
+                        {
+                            modules.objectResult.Establishment = establishment.objectResult;
+                            HttpContext.Session.Set(Constants.SessionKeyState, modules.objectResult);
+                        }
 
                         this.User.GetUserId();
                         return await Task.FromResult(RedirectToAction("Dashboard", "Establishment"));

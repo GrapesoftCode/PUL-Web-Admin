@@ -117,22 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CreateBook" xml:space="preserve">
-    <value>book</value>
-  </data>
-  <data name="GeneralReportStatusBooks" xml:space="preserve">
-    <value>book</value>
-  </data>
-  <data name="GetAllBooks" xml:space="preserve">
-    <value>book</value>
-  </data>
-  <data name="GetBookById" xml:space="preserve">
-    <value>book</value>
-  </data>
-  <data name="GetListBooksByBookState" xml:space="preserve">
-    <value>book</value>
-  </data>
-  <data name="UpdateBook" xml:space="preserve">
-    <value>book</value>
+  <data name="CreateNotification" xml:space="preserve">
+    <value>notifications</value>
   </data>
 </root>

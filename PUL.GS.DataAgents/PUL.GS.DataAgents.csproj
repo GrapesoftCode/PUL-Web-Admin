@@ -44,6 +44,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Food.resx</DependentUpon>
     </Compile>
+    <Compile Update="ServiceURIs\Notification.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Notification.resx</DependentUpon>
+    </Compile>
     <Compile Update="ServiceURIs\Promotion.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -80,6 +85,10 @@
     <EmbeddedResource Update="ServiceURIs\Food.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Food.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ServiceURIs\Notification.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Notification.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="ServiceURIs\Promotion.resx">
       <Generator>ResXFileCodeGenerator</Generator>

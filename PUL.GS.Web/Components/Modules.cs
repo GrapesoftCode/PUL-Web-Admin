@@ -33,7 +33,7 @@ namespace PUL.GS.Web.Components
         private async Task<string> ExecuteUserMenu(List<Module> listModules)
         {
             string menuDin = "<ul id='sidebarnav'>";
-            menuDin += $"<li class=\"sidebar-item\"> <a class=\"sidebar-link waves-effect waves-dark sidebar-link\" href='{Url.Action("Dashboard", "Establishment")}' aria-expanded=\"false\"><i class=\"mdi mdi-av-timer\"></i><span class=\"hide-menu\">Dashboard</span></a></li>";
+            menuDin += $"<li class=\"sidebar-item\"> <a class=\"sidebar-link waves-effect waves-dark sidebar-link\" href='{Url.Action("Book", "Dashboard")}' aria-expanded=\"false\"><i class=\"mdi mdi-av-timer\"></i><span class=\"hide-menu\">Dashboard</span></a></li>";
 
             foreach (var module in listModules)
             {

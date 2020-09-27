@@ -22,14 +22,14 @@ namespace PUL.GS.DataAgents.ServiceURIs {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Book {
+    internal class Notification {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Book() {
+        internal Notification() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PUL.GS.DataAgents.ServiceURIs {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PUL.GS.DataAgents.ServiceURIs.Book", typeof(Book).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PUL.GS.DataAgents.ServiceURIs.Notification", typeof(Notification).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,11 @@ namespace PUL.GS.DataAgents.ServiceURIs {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a book.
+        ///   Busca una cadena traducida similar a notifications.
         /// </summary>
-        internal static string CreateBook {
+        internal static string CreateNotification {
             get {
-                return ResourceManager.GetString("CreateBook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a book.
-        /// </summary>
-        internal static string GeneralReportStatusBooks {
-            get {
-                return ResourceManager.GetString("GeneralReportStatusBooks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a book.
-        /// </summary>
-        internal static string GetAllBooks {
-            get {
-                return ResourceManager.GetString("GetAllBooks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a book.
-        /// </summary>
-        internal static string GetBookById {
-            get {
-                return ResourceManager.GetString("GetBookById", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a book.
-        /// </summary>
-        internal static string GetListBooksByBookState {
-            get {
-                return ResourceManager.GetString("GetListBooksByBookState", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a book.
-        /// </summary>
-        internal static string UpdateBook {
-            get {
-                return ResourceManager.GetString("UpdateBook", resourceCulture);
+                return ResourceManager.GetString("CreateNotification", resourceCulture);
             }
         }
     }
