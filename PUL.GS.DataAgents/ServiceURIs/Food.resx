@@ -120,10 +120,16 @@
   <data name="CreateFood" xml:space="preserve">
     <value>food</value>
   </data>
+  <data name="DeleteFood" xml:space="preserve">
+    <value>food</value>
+  </data>
   <data name="GetAllFoods" xml:space="preserve">
     <value>food</value>
   </data>
   <data name="GetFoodById" xml:space="preserve">
+    <value>food</value>
+  </data>
+  <data name="UpdateFood" xml:space="preserve">
     <value>food</value>
   </data>
 </root>

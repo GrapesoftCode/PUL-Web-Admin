@@ -23,17 +23,27 @@ namespace PUL.GS.Web.Controllers
 
         public IActionResult Index()
         {
+            var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             return View();
         }
 
         public IActionResult Pending()
         {
+            var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             return View();
         }
 
         [HttpGet]
         public IActionResult Dashboard()
         {
+            var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.FullName = user.FirstName + " " + user.SurName + " " + user.LastName;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             return View();
         }
 
@@ -92,12 +102,12 @@ namespace PUL.GS.Web.Controllers
                     {
                         en = "PUL Reservación"
                     }
-            };
+                };
 
-                if (updateBook.BookStatus == 1){
+                if (updateBook.BookStatus == 2){
                     notification.contents = new Language()
                     {
-                        en = "Su reservación a sido aceptada."
+                        en = "Su reservación ha sido aceptada."
                     };
                 }
                 else {

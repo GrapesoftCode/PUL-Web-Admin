@@ -120,10 +120,16 @@
   <data name="CreateDrink" xml:space="preserve">
     <value>drink</value>
   </data>
+  <data name="DeleteDrink" xml:space="preserve">
+    <value>drink</value>
+  </data>
   <data name="GetAllDrinks" xml:space="preserve">
     <value>drink</value>
   </data>
   <data name="GetDrinkById" xml:space="preserve">
+    <value>drink</value>
+  </data>
+  <data name="UpdateDrink" xml:space="preserve">
     <value>drink</value>
   </data>
 </root>

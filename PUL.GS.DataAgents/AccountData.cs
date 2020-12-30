@@ -52,6 +52,24 @@ namespace PUL.GS.DataAgents
             return response;
         }
 
+        public Response<List<Module>> GetModulesByUserId(string userId, string token)
+        {
+            var response = new Response<List<Module>>() { Success = true };
+            try
+            {
+                var client = new HttpClientWrapper<List<Module>, List<Module>>();
+                var serviceResponse = client.Consume(new Uri(settings.baseUrl),
+                    $"{ServiceURIs.Account.GetModulesByUserId}/{userId}", HttpVerb.Get, null, token).Result;
+                response.objectResult = serviceResponse;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Error = new Error() { Message = ex.Message };
+            }
+            return response;
+        }
+
         public Response<User> AddUser(User user)
         {
             var response = new Response<User>() { Success = true };

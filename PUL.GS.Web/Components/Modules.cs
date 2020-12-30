@@ -15,17 +15,18 @@ namespace PUL.GS.Web.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
-            var modules = HttpContext.Session.Get<string>(Constants.Moduleskey);
+            //var modules = HttpContext.Session.Get<string>(Constants.Moduleskey);
             string menu = string.Empty;
 
-            if (modules == null)
+            if (user != null)
             {
                 menu = await ExecuteUserMenu(user.Modules);
-                HttpContext.Session.Set(Constants.Moduleskey, menu);
-                modules = menu;
+                //HttpContext.Session.Set(Constants.Moduleskey, menu);
+                //modules = menu;
+                user.ModulesString = menu;
             }
 
-            user.ModulesString = modules;
+            //user.ModulesString = modules;
 
             return View(user);
         }
@@ -33,7 +34,7 @@ namespace PUL.GS.Web.Components
         private async Task<string> ExecuteUserMenu(List<Module> listModules)
         {
             string menuDin = "<ul id='sidebarnav'>";
-            menuDin += $"<li class=\"sidebar-item\"> <a class=\"sidebar-link waves-effect waves-dark sidebar-link\" href='{Url.Action("Book", "Dashboard")}' aria-expanded=\"false\"><i class=\"mdi mdi-av-timer\"></i><span class=\"hide-menu\">Dashboard</span></a></li>";
+            menuDin += $"<li class=\"sidebar-item\"> <a class=\"sidebar-link waves-effect waves-dark sidebar-link\" href='{Url.Action("Dashboard", "Book")}' aria-expanded=\"false\"><i class=\"mdi mdi-av-timer\"></i><span class=\"hide-menu\">Dashboard</span></a></li>";
 
             foreach (var module in listModules)
             {

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\onesignal\**" />
+    <Content Remove="wwwroot\onesignal\**" />
+    <EmbeddedResource Remove="wwwroot\onesignal\**" />
+    <None Remove="wwwroot\onesignal\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
@@ -13,11 +20,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PUL.GS.DataAgents\PUL.GS.DataAgents.csproj" />
     <ProjectReference Include="..\PUL.GS.Models\PUL.GS.Models.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

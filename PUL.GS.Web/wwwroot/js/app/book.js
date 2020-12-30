@@ -49,11 +49,13 @@ PulAdmin.Book.prototype.load = function () {
                     $("#bookInProcess").text(booksStates[2].count);
                     $("#bookFinished").text(booksStates[3].count);
 
+                    //if()
+
                 } else {
                     Swal.fire({
-                        title: "Operación incorrecta",
+                        title: "No se encontraron reservaciones pendientes.",
                         text: "",//response.error.message,
-                        type: "error",
+                        type: "info",
                         showCancelButton: false,
                         showConfirmButton: true,
                         allowEscapeKey: true,

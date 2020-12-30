@@ -24,6 +24,9 @@ namespace PUL.GS.Web.Controllers
 
         public IActionResult Index()
         {
+            var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             return View();
         }
 
@@ -44,6 +47,9 @@ namespace PUL.GS.Web.Controllers
 
         public IActionResult NewPromotion()
         {
+            var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             return View();
         }
 

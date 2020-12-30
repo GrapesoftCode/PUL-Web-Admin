@@ -52,7 +52,7 @@ namespace PUL.GS.Web.Profiles
             Portion = viewModel.Portion,
             Price = viewModel.Price,
             Grams = viewModel.Grams,
-            Logo =  ToLogoModel(viewModel.Logo),
+            Logo = viewModel.Logo != null ? ToLogoModel(viewModel.Logo) : null,
             userId = viewModel.userId,
             establishmentId = viewModel.establishmentId
         };
@@ -65,7 +65,7 @@ namespace PUL.GS.Web.Profiles
             Description = viewModel.Description,
             Grades = viewModel.Grades,
             Milliliters =viewModel.Milliliters,
-            Logo = ToLogoModel(viewModel.Logo),
+            Logo = viewModel.Logo != null ? ToLogoModel(viewModel.Logo) : null,
             Price = viewModel.Price,
             Stock = viewModel.Stock,
             userId = viewModel.userId,

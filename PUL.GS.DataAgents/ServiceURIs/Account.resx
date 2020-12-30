@@ -120,10 +120,13 @@
   <data name="AddUser" xml:space="preserve">
     <value>session</value>
   </data>
+  <data name="GetModulesByUserId" xml:space="preserve">
+    <value>user/getModulesByUserId</value>
+  </data>
   <data name="GetToken" xml:space="preserve">
     <value>session/login</value>
   </data>
   <data name="GetUserByCredentials" xml:space="preserve">
-    <value>user</value>
+    <value>user/getUserByCredentials</value>
   </data>
 </root>

@@ -10,7 +10,7 @@
             <h4 class="page-title">Nueva Bebida</h4>
         </div>
         <div class="col-1 align-self-lg-end">
-            <div class="btn-group">
+            @*<div class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Action
                 </button>
@@ -21,7 +21,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="col-3 align-self-center">
             @*<div class="d-flex align-items-center justify-content-end">
@@ -41,13 +41,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            @using (Html.BeginForm("NewDrink", "Drink", FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
-            {
-                @*<form>*@
+            <form id="createDrinkForm" name="createDrinkForm" method="post" action="Create" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-body">
-
-
                         <div class="row">
                             <div class="col-sm-4">
 
@@ -68,40 +64,18 @@
                             <div class="col-sm-7">
 
                                 <div class="row">
-                                    @*<div class="col-sm-4">
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 text-left control-label col-form-label">Tipo</label>
-                                                <div class="col-md-9">
-                                                    <select class="form-control custom-select" id="type" name="type" required>
-                                                        <option value="Alcoholica">Alcoholica</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>*@
                                     <div class="col-sm-12">
                                         <div class="form-group row">
                                             <label class="col-sm-3 text-left control-label col-form-label">Categoria</label>
                                             <div class="col-md-9">
                                                 @*<select class="form-control custom-select" id="category" name="category" required>
-                                                    <option value="Vino">Vino</option>
-                                                    <option value="Cerveza">Cerveza</option>
-                                                </select>*@
+                                                        <option value="Vino">Vino</option>
+                                                        <option value="Cerveza">Cerveza</option>
+                                                    </select>*@
                                                 <input type="text" class="form-control" id="category" name="category" placeholder="Categoria" required>
                                             </div>
                                         </div>
                                     </div>
-                                    @*<div class="col-sm-4">
-                                            <div class="form-group row">
-                                                <label class="col-sm-4 text-left control-label col-form-label">Subcategoria</label>
-                                                <div class="col-md-8">
-                                                    <select class="form-control custom-select" id="subcategory" name="subcategory" required>
-                                                        <option value="Tinto">Tinto</option>
-                                                        <option value="Clara">Clara</option>
-                                                        <option value="Oscura">Oscura</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>*@
                                 </div>
 
                                 <div class="row">
@@ -125,16 +99,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @*<div class="col-sm-2">
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <select class="form-control custom-select" required>
-                                                        <option value="lt">lt</option>
-                                                        <option value="ml">ml</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>*@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -196,14 +160,17 @@
                         </div>
                     </div>
                 </div>
-                @*</form>*@
-            }
+            </form>
         </div>
     </div>
 </div>
 
 @section Scripts{
+    <script src="~/js/app/drink.js"></script>
     <script>
+        var ui = new PulAdmin.Drink();
+        ui.addDrinkHandlers();
+
         $(".bt-switch input[type='checkbox'], .bt-switch input[type='radio']").bootstrapSwitch();
         //$("input[name='quantity']").TouchSpin();
 

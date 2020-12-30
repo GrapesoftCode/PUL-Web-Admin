@@ -17,18 +17,23 @@ namespace PUL.GS.Web.Controllers
     public class EstablishmentController : Controller
     {
         private readonly EstablishmentData _establishmentAgent;
+        private readonly AccountData _accountAgent;
         //private readonly IMapper _mapper;
         public EstablishmentController(
              //IMapper mapper, 
              IOptions<AppSettings> appSettings)
         {
             _establishmentAgent = new EstablishmentData(appSettings.Value);
+            _accountAgent = new AccountData(appSettings.Value);
             //this._mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult Dashboard()
         {
+            var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             return View();
         }
 
@@ -37,11 +42,20 @@ namespace PUL.GS.Web.Controllers
         public ActionResult Profile()
         {
             var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             var userId = user.Id;
             var result = _establishmentAgent.GetEstablishmentById(userId);
 
             if (result.Success)
             {
+                user.Establishment = result.objectResult;
+                var menu = _accountAgent.GetModulesByUserId(userId, null);
+                if (menu.Success)
+                {
+                    user.Modules = menu.objectResult;
+                }
+
                 return View(result.objectResult);
             }
 
@@ -52,6 +66,9 @@ namespace PUL.GS.Web.Controllers
         [HttpGet]
         public IActionResult NewEstablishment()
         {
+            var user = HttpContext.Session.Get<User>(Constants.SessionKeyState);
+            ViewBag.Email = user.Email;
+            ViewBag.Logo = user.Establishment.Logo.Uri;
             return View();
         }
 

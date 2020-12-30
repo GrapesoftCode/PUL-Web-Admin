@@ -10,7 +10,7 @@
             <h4 class="page-title">Mis platillos</h4>
         </div>
         <div class="col-1 align-self-lg-end">
-            <div class="btn-group">
+            @*<div class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Action
                 </button>
@@ -21,7 +21,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="javascript:void(0)">Separated link</a>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="col-3 align-self-center">
             @*<div class="d-flex align-items-center justify-content-end">
@@ -39,51 +39,141 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list footable footable-5 footable-paging footable-paging-center breakpoint-lg" data-paging="true" data-paging-size="7" style="">
-                            <thead>
-                                <tr class="footable-header">
-                                    <th style="display: table-cell;">Nombre</th>
-                                    <th style="display: table-cell;">Categoria</th>
-                                    <th style="display: table-cell;">Porción</th>
-                                    <th style="display: table-cell;">Cantidad</th>
-                                    <th class="footable-last-visible" style="display: table-cell;">Precio</th>
-                                    <th style="display: table-cell;">Descripción</th>
-                                </tr>
-                            </thead>
-                            <tbody id="grdFoods">
-
-
-                                @*<tr>
-                                        <td class="footable-first-visible" style="display: table-cell;">1</td>
-                                        <td style="display: table-cell;">
-                                            <a href="javascript:void(0)"><img src="~/assets/images/food/paste.png" alt="user" width="40" class="rounded-circle"> Alitas</a>
-                                        </td>
-                                        <td style="display: table-cell;">Alitas Habanero</td>
-                                        <td style="display: table-cell;">Snack</td>
-                                        <td style="display: table-cell;"><span class="label label-danger">Designer</span> </td>
-                                        <td style="display: table-cell;">23</td>
-                                        <td style="display: table-cell;">4.º</td>
-                                        <td class="footable-last-visible" style="display: table-cell;">$1200</td>
-                                    </tr>*@
-                            </tbody>
-                            @*<tfoot><tr class="footable-paging"><td colspan="8"><div class="footable-pagination-wrapper"><ul class="pagination justify-content-center"><li class="footable-page-nav disabled" data-page="first"><a class="footable-page-link" href="#">«</a></li><li class="footable-page-nav disabled" data-page="prev"><a class="footable-page-link" href="#">‹</a></li><li class="footable-page visible active" data-page="1"><a class="footable-page-link" href="#">1</a></li><li class="footable-page visible" data-page="2"><a class="footable-page-link" href="#">2</a></li><li class="footable-page-nav" data-page="next"><a class="footable-page-link" href="#">›</a></li><li class="footable-page-nav" data-page="last"><a class="footable-page-link" href="#">»</a></li></ul><div class="divider"></div><span class="label label-primary">1 of 2</span></div></td></tr></tfoot>*@
-                        </table>
-                    </div>
-                </div>
+    <div id="grdFoods" class="row"></div>
+    @*<div class="row">
+            <div id="grdFoods" class="col-xs-12 col-sm-12 col-md-12">
             </div>
+        </div>*@
+</div>
+
+<div id="detailsFoodModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="updateFoodModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <form id="updateFoodForm" method="post" action="/Food/UpdateItem">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Detalle del plato</h4>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" id="id" name="id" />
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-5">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <img class="align-self-end mr-3 w-100 img-thumbnail" id="imgFood" name="imgFood" src="/assets/images/300x300.jpeg" width="300" height="300" alt="Generic placeholder image" required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="btn btn-info waves-effect waves-light" style="width:100%;">
+                                        <span>
+                                            Subir otra imagen
+                                        </span>
+                                        <input type="file" class="upload" id="logo" name="logo" onchange="readURL(this);">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-7">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-left control-label col-form-label">Categoria</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="category" name="category" class="form-control readonly" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-left control-label">Nombre</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="name" name="name" class="form-control readonly" placeholder="Nombre del platillo o comida" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-left control-label">Porciones</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected"><span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchspin-down" type="button">-</button></span><input type="text" id="portion" name="portion" class="form-control" value="1" required=""><span class="input-group-btn input-group-append"><button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-left control-label">Cantidad</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected"><span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchspin-down" type="button">-</button></span><input id="grams" type="text" value="1" name="grams" class="form-control" required=""><span class="input-group-addon bootstrap-touchspin-postfix input-group-append"><span class="input-group-text">g</span></span><span class="input-group-btn input-group-append"><button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-left control-label">Precio</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected"><span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchspin-down" type="button">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix input-group-prepend"><span class="input-group-text">$</span></span><input id="price" type="text" value="1" name="price" class="form-control" required=""><span class="input-group-btn input-group-append"><button class="btn btn-primary bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-left control-label">Descripción</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" id="description" name="description" required="" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-danger waves-effect waves-light btnUpdateFood">Guardar cambios</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 @section Scripts {
+    <script src="~/js/controls/foodGrid.js"></script>
     <script src="~/js/app/food.js"></script>
     <script>
         var ui = new PulAdmin.Food();
         ui.init();
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgFood').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 }

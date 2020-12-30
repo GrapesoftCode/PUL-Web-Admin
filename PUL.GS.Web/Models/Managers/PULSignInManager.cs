@@ -8,6 +8,7 @@ using PUL.GS.Models;
 using PUL.GS.Models.Common;
 using PUL.GS.Web.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -116,11 +117,22 @@ namespace PUL.GS.Web.Models.Managers
         internal ClaimsPrincipal StoreTwoFactorInfo(string userId, string loginProvider)
         {
             var identity = new ClaimsIdentity(IdentityConstants.TwoFactorUserIdScheme);
-            identity.AddClaim(new Claim(ClaimTypes.Name, userId));
+            //identity.AddClaim(new Claim(ClaimTypes.Name, userId));
+            //identity.AddClaim(new Claim("EMAIL", "unejemplo"));
+
+            List<Claim> claims = new List<Claim>() {
+
+                new Claim(ClaimTypes.Name,userId),
+                new Claim(ClaimTypes.Email, "Ejemplo")
+            };
+
             if (loginProvider != null)
             {
-                identity.AddClaim(new Claim(ClaimTypes.AuthenticationMethod, loginProvider));
+                claims.Add(new Claim(ClaimTypes.AuthenticationMethod, loginProvider));
             }
+
+            identity.AddClaims(claims);
+
             return new ClaimsPrincipal(identity);
         }
 

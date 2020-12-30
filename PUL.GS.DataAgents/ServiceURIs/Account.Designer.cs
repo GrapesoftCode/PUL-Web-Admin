@@ -70,6 +70,15 @@ namespace PUL.GS.DataAgents.ServiceURIs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a user/getModulesByUserId.
+        /// </summary>
+        internal static string GetModulesByUserId {
+            get {
+                return ResourceManager.GetString("GetModulesByUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a session/login.
         /// </summary>
         internal static string GetToken {
@@ -79,7 +88,7 @@ namespace PUL.GS.DataAgents.ServiceURIs {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a user.
+        ///   Busca una cadena traducida similar a user/getUserByCredentials.
         /// </summary>
         internal static string GetUserByCredentials {
             get {

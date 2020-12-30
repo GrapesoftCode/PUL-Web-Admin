@@ -40,26 +40,36 @@ namespace PUL.GS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var token = _accountAgent.GetToken(user);
-                if (token.Success)
+                var resultToken = _accountAgent.GetToken(user);
+                if (resultToken.Success)
                 {
-                    HttpContext.Session.Set(Constants.SessionKeyState, token.objectResult);
-                    user.Token = token.objectResult;
+                    //HttpContext.Session.Set(Constants.SessionKeyState, token.objectResult);
+                    //user.Token = token.objectResult;
                     var result = await _signInManager.PasswordSignInAsync(user.Username, user.Password, false, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
-                        var modules = _accountAgent.GetUserByCredentials(user.Username, user.Password, HttpContext.Session.Get<string>("token"));
-                        var userId = modules.objectResult.Id;
+                        var userData = _accountAgent.GetUserByCredentials(user.Username, user.Password, resultToken.objectResult).objectResult;
+                        var userId = userData.Id;
                         var establishment = _establishmentAgent.GetEstablishmentById(userId);
-
+                       
                         if (establishment.Success)
                         {
-                            modules.objectResult.Establishment = establishment.objectResult;
-                            HttpContext.Session.Set(Constants.SessionKeyState, modules.objectResult);
+                            userData.Establishment = establishment.objectResult;
+                            var menu = _accountAgent.GetModulesByUserId(userId, null);
+
+                            if (menu.Success)
+                            {
+                                userData.Modules = menu.objectResult;
+                            }
+                        }
+                        else {
+                            HttpContext.Session.Set(Constants.SessionKeyState, userData);
+                            return await Task.FromResult(RedirectToAction("NewEstablishment", "Establishment"));
                         }
 
-                        this.User.GetUserId();
-                        return await Task.FromResult(RedirectToAction("Dashboard", "Establishment"));
+                        //this.User.GetUserId();
+                        HttpContext.Session.Set(Constants.SessionKeyState, userData);
+                        return await Task.FromResult(RedirectToAction("Dashboard", "Book"));
                     }
                     else
                     {

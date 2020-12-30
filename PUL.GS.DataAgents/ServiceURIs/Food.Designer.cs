@@ -72,6 +72,15 @@ namespace PUL.GS.DataAgents.ServiceURIs {
         /// <summary>
         ///   Busca una cadena traducida similar a food.
         /// </summary>
+        internal static string DeleteFood {
+            get {
+                return ResourceManager.GetString("DeleteFood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a food.
+        /// </summary>
         internal static string GetAllFoods {
             get {
                 return ResourceManager.GetString("GetAllFoods", resourceCulture);
@@ -84,6 +93,15 @@ namespace PUL.GS.DataAgents.ServiceURIs {
         internal static string GetFoodById {
             get {
                 return ResourceManager.GetString("GetFoodById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a food.
+        /// </summary>
+        internal static string UpdateFood {
+            get {
+                return ResourceManager.GetString("UpdateFood", resourceCulture);
             }
         }
     }

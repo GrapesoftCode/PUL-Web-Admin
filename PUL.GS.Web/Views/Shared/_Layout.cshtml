@@ -23,6 +23,10 @@
     @*<link rel="stylesheet" type="text/css" href="~/assets/libs/dropzone/dist/min/dropzone.min.css">*@
     <link rel="stylesheet" type="text/css" href="~/assets/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
     <link rel="stylesheet" type="text/css" href="~/assets/libs/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css">
+
+    <link href="~/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="~/dist/css/style.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -118,8 +122,8 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="~/assets/images/users/9.png" alt="user" class="rounded-circle" width="40">
-                                <span class="m-l-5 font-medium d-none d-sm-inline-block">Edy Daniel <i class="mdi mdi-chevron-down"></i></span>
+                                <img src="@ViewBag.Logo" alt="user" class="rounded-circle" width="40">
+                                <span class="m-l-5 font-medium d-none d-sm-inline-block">@User.Identity.Name <i class="mdi mdi-chevron-down"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <span class="with-arrow">
@@ -127,11 +131,11 @@
                                 </span>
                                 <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
                                     <div class="">
-                                        <img src="~/assets/images/users/9.png" alt="user" class="rounded-circle" width="60">
+                                        <img src="@ViewBag.Logo" alt="user" class="rounded-circle" width="60">
                                     </div>
                                     <div class="m-l-10">
-                                        <h4 class="m-b-0">@UserManager.GetUserName(User)</h4>
-                                        <p class=" m-b-0">jon@gmail.com</p>
+                                        <h4 class="m-b-0">@User.Identity.Name</h4>
+                                        <p class=" m-b-0">@ViewBag.Email</p>
                                     </div>
                                 </div>
                                 <div class="profile-dis scrollable">
@@ -174,8 +178,8 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                All Rights Reserved by Nice admin. Designed and Developed by
-                <a href="https://wrappixel.com">WrapPixel</a>.
+                Todos los derechos reservados por PUL México
+                @*<a href="https://wrappixel.com">WrapPixel</a>.*@
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -210,21 +214,44 @@
     <script src="~/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="~/dist/js/custom.js"></script>
-    <script src="~/assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <script src="~/assets/libs/sweetalert2/sweet-alert.init.js"></script>
     <script src="~/assets/libs/block-ui/jquery.blockUI.js"></script>
     <script src="~/assets/extra-libs/block-ui/block-ui.js"></script>
     <script src="~/assets/libs/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
     <script src="~/assets/libs/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     @*<script src="~/assets/libs/dropzone/dist/min/dropzone.min.js"></script>*@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    <script src="~/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/assets/libs/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <!--chartis chart-->
+    <script src="~/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+
+    <!--c3 charts -->
+    <script src="~/assets/extra-libs/c3/d3.min.js"></script>
+    <script src="~/assets/extra-libs/c3/c3.min.js"></script>
+    <script src="~/dist/js/pages/dashboards/dashboard3.js"></script>
+
     <script src="~/js/app/main.js"></script>
     <script src="~/js/controls/bookGrid.js"></script>
     <script src="~/js/controls/comboGrid.js"></script>
     <script src="~/js/controls/drinkGrid.js"></script>
-    <script src="~/js/controls/foodGrid.js"></script>
     <script src="~/js/controls/promotionGrid.js"></script>
     <script src="~/js/controls/tableGrid.js"></script>
+
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "5b7438fc-33c7-4ca1-bfe6-2cccfae4788d",
+            });
+        });
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
